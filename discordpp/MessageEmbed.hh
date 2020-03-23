@@ -149,47 +149,30 @@ namespace discordpp {
       return *this;
     };
 
-    /**
-     * @param timestamp
-     * @details Sets ISO 8061 Timestamp. timestamp is optional and will default to now.
-     * @returns MessageEmbed
-     */
+		/**
+		 * @param timestamp
+		 * @details Sets ISO 8061 Timestamp. timestamp is optional and will default to now.
+		 * @returns MessageEmbed
+		 */
+		MessageEmbed setTimestamp(std::time_t time){
+			std::string timestamp(20, '0');
+			char* buf = &timestamp[0];
 
-    MessageEmbed setTimestamp(std::string timestamp) {
-      if (!timestamp.empty()) {
-        embed["timestamp"] = timestamp;
-      } else {
-        time_t now;
-        time(&now);
-        char buf[sizeof "2011-10-08T07:07:09Z"];
-        strftime(buf, sizeof buf, "%FT%TZ", gmtime(&now));
-        embed["timestamp"] = (std::string)buf;
-      }
+			std::strftime(buf, 21, "%FT%TZ", std::gmtime(&time));
+			setTimestamp(timestamp);
 
-      return *this;
-    };
+			return *this;
+		}
 
-    MessageEmbed setTimestamp2(std::string timestamp) {
-      if (!timestamp.empty()) {
-        embed["timestamp"] = timestamp;
-      } else {
-        auto now = std::chrono::system_clock::now();
-        std::time_t now_time = std::chrono::system_clock::to_time_t(now);
+		MessageEmbed setTimestamp(std::string timestamp = ""){
+			if(!timestamp.empty()){
+				embed["timestamp"] = timestamp;
+			}else{
+				setTimestamp(std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()));
+			}
 
-        std::string out(21, '0');
-        char* buf = &out[0];
-
-        std::strftime(buf, 21, "%FT%TZ", gmtime(&now_time));
-
-        std::cout << out << std::endl;
-
-        embed["timestamp"] = out;
-
-        std::cout << embed["timestamp"].get<std::string>() << std::endl;
-      }
-
-      return *this;
-    }
+			return *this;
+		};
 
     /**
      * @returns JSON
