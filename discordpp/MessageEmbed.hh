@@ -191,5 +191,5 @@ namespace discordpp{
 		 */
 
 		nlohmann::json embed;
-	}
+	};
 }
