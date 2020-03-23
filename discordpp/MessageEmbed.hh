@@ -27,7 +27,7 @@ namespace discordpp{
 			embed["title"] = title;
 
 			return *this;
-		};
+		}
 
 		/**
 		 * @param desc
@@ -39,7 +39,7 @@ namespace discordpp{
 			embed["description"] = desc;
 
 			return *this;
-		};
+		}
 
 		/**
 		 * @param color
@@ -51,7 +51,7 @@ namespace discordpp{
 			embed["color"] = color;
 
 			return *this;
-		};
+		}
 
 		/**
 		 * @param url
@@ -63,7 +63,7 @@ namespace discordpp{
 			embed["url"] = url;
 
 			return *this;
-		};
+		}
 
 		/**
 		 * @param footText
@@ -75,7 +75,7 @@ namespace discordpp{
 			embed["footer"]["text"] = footText;
 
 			return *this;
-		};
+		}
 
 		/**
 		 * @param footIconURL
@@ -87,7 +87,7 @@ namespace discordpp{
 			embed["footer"]["icon_url"] = footIconURL;
 
 			return *this;
-		};
+		}
 
 		/**
 		 * @param title
@@ -109,7 +109,7 @@ namespace discordpp{
 			embed["fields"].push_back(toPush);
 
 			return *this;
-		};
+		}
 
 		/**
 		 * @param url
@@ -121,7 +121,7 @@ namespace discordpp{
 			embed["image"]["url"] = url;
 
 			return *this;
-		};
+		}
 
 		/**
 		 * @param url
@@ -133,7 +133,7 @@ namespace discordpp{
 			embed["thumbnail"]["url"] = url;
 
 			return *this;
-		};
+		}
 
 		/**
 		 * @param name
@@ -147,7 +147,7 @@ namespace discordpp{
 			embed["author"]["icon_url"] = iconURL;
 
 			return *this;
-		};
+		}
 
 		/**
 		 * @param timestamp
@@ -191,5 +191,5 @@ namespace discordpp{
 		 */
 
 		nlohmann::json embed;
-	};
+	}
 }
